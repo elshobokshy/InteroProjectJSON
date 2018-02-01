@@ -37,7 +37,7 @@ $HEADER = <<<END
 END;
 
 
-if (!$data = file_get_contents('http://api.loire-atlantique.fr:80/opendta/1.0/traficevents?filter=Tous')) {
+if (!$data = file_get_contents('http://api.loire-atlantique.fr:80/opendata/1.0/traficevents?filter=Tous')) {
    echo file_get_contents("404.html");
 } else {
     $api = json_decode($data);
