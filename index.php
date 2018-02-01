@@ -1,4 +1,6 @@
 <?php
+$opts = array('http' => array('proxy'=> 'tcp://www-cache:3128', 'request_fulluri'=> true));
+stream_context_set_default($opts);
 
 $HEADER = <<<END
 
