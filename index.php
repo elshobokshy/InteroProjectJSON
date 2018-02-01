@@ -1,7 +1,5 @@
 <?php
 
-$api = json_decode(file_get_contents('http://api.loire-atlantique.fr:80/opendata/1.0/traficevents?filter=Tous'));
-
 $HEADER = <<<END
 
 <!DOCTYPE html>
@@ -20,7 +18,7 @@ $HEADER = <<<END
     crossorigin=""></script>
 
     <style>
-        #mapid { height: 500px; }
+        #mapid { height: 95vh;  margin: 10px;}
     </style>
     
 
@@ -38,7 +36,14 @@ $HEADER = <<<END
 
 END;
 
-echo $HEADER;
+
+if (!$data = file_get_contents('http://api.loire-atlantique.fr:80/opendta/1.0/traficevents?filter=Tous')) {
+   echo file_get_contents("404.html");
+} else {
+    $api = json_decode($data);
+    echo $HEADER ;
+}
+
 
 ?>
 
